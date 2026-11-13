@@ -1,42 +1,42 @@
-# BacktrackX — Interactive Backtracking Learning Platform
+# BacktrackX
 
-BacktrackX is an interactive learning project designed to help learners understand backtracking algorithms through visual exploration, guided lessons, practice challenges, and progress tracking.
+BacktrackX is a mobile learning project for understanding backtracking algorithms. It pairs a Flutter app with an Express API and MongoDB backend, with visualisers and practice activities for problems such as Sudoku, N-Queens, and Rat in a Maze.
 
-The repository contains a Flutter mobile client and a Node.js/Express backend backed by MongoDB.
+## What you can explore
 
-## Learning experience
+- **Sudoku:** follow the solver as it tries values, checks constraints, reaches a dead end, and returns to an earlier state.
+- **N-Queens:** see how the algorithm places queens while checking for conflicts.
+- **Rat in a Maze:** follow path exploration and observe what happens when a route cannot lead to a solution.
+- **Playback controls:** step through algorithm states and inspect the decisions made during a run.
+- **Learning and practice:** the app also contains lessons, quizzes, challenges, and progress-related screens.
 
-The project is organised around four learning areas:
-
-1. **Algorithm visualisation:** explore backtracking problems and their search states.
-2. **Playback and state inspection:** follow the algorithm's progression and inspect how choices and backtracking change the state.
-3. **Practice and challenges:** attempt questions and prediction-style exercises.
-4. **Learning and progress:** access lessons, quizzes, progress records, XP/badges, and leaderboard-related functionality represented in the backend.
+The visualisers are the central part of the project: the aim is to make the recursive search process easier to follow than reading code alone.
 
 ## Architecture
 
 ```text
-Flutter mobile application
-          |
-       HTTP API
-          |
-Node.js + Express backend
-          |
-       MongoDB
+Flutter app
+    |
+ HTTP / REST
+    |
+Express backend
+    |
+  MongoDB
 ```
 
-## Technology
+## Technologies
 
-| Component | Technologies |
+| Part | Technologies |
 | --- | --- |
-| Mobile client | Flutter, Dart |
-| State and API | Provider, http |
+| Mobile app | Flutter, Dart |
+| State management | Provider |
+| HTTP requests | http |
 | Local preferences | shared_preferences |
 | Backend | Node.js, Express |
 | Database | MongoDB, Mongoose |
 | Authentication | JWT, bcryptjs |
 
-## Repository structure
+## Project layout
 
 ```text
 .
@@ -49,21 +49,16 @@ Node.js + Express backend
 │   ├── utils/
 │   └── server.js
 └── backtrackx_new/
+    ├── assets/
     ├── lib/
     ├── android/
     ├── ios/
-    ├── assets/
     └── pubspec.yaml
 ```
 
-## Run locally
+## Run the project
 
-### Requirements
-
-- Flutter SDK and Dart
-- Android Studio or another configured Flutter device/emulator
-- Node.js 18+
-- MongoDB instance or Atlas cluster
+You need Node.js, npm, MongoDB, Flutter, and a configured Android emulator or device.
 
 ### Backend
 
@@ -73,15 +68,15 @@ cd BacktrackX/backend
 npm install
 ```
 
-Create a local `.env` file using `.env.example` as a reference. Configure the MongoDB connection string and JWT secret, then run:
+Create a `.env` file based on `.env.example` and set the MongoDB connection string and JWT secret. Then start the API:
 
 ```bash
 npm run dev
 ```
 
-### Flutter client
+### Flutter app
 
-In a second terminal:
+Open a second terminal:
 
 ```bash
 cd backtrackx_new
@@ -89,24 +84,16 @@ flutter pub get
 flutter run
 ```
 
-Configure the API base URL in the client for the address reachable from your emulator or device. An Android emulator generally cannot use the host machine's `localhost` address directly.
+Make sure the API base URL in the Flutter app points to an address reachable by your selected device. For an Android emulator, the host computer is usually reached through `10.0.2.2`, not `localhost`.
 
-## API areas
+## Backend routes
 
-The backend is organised into route/controller groups for:
+The backend is divided into route and controller groups for authentication, learning content, progress, challenges, and leaderboard functionality. See `backend/routes/` for the current route definitions.
 
-- Authentication
-- Learning content and quizzes
-- User progress
-- Challenges
-- Leaderboards
+## Before release
 
-See `backend/routes/` and the backend README for the current endpoint details.
-
-## Development notes
-
-The repository includes a Flutter project under `backtrackx_new/`. Keep generated build output, local configuration, and secrets out of commits. Before release, test authentication and authorisation, validate user-submitted data, and verify that progress and leaderboard updates are consistent.
+Keep local environment files and secrets out of Git. Test the app on the target devices, and review authentication, authorisation, request validation, and consistency of progress updates before using real accounts.
 
 ## License
 
-A license badge is present in the repository README. Confirm the accompanying license file and its terms before reuse or redistribution.
+The repository includes an MIT license badge. Refer to the [LICENSE](LICENSE) file for the actual license terms.
