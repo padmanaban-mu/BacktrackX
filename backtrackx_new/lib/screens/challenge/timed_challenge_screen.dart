@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../services/nqueens_service.dart';
-import '../../services/progress_service.dart';
 import '../../providers/auth_provider.dart';
 import '../../providers/progress_provider.dart';
 import '../../routes/app_routes.dart';
@@ -187,7 +186,6 @@ class _TimedChallengeScreenState extends State<TimedChallengeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final cs = Theme.of(context).colorScheme;
     final colorScheme = Theme.of(context).colorScheme;
     final isWarning = _remainingSeconds <= 30;
 
@@ -197,7 +195,7 @@ class _TimedChallengeScreenState extends State<TimedChallengeScreen> {
           icon: Container(
             padding: const EdgeInsets.all(6),
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.25),
+              color: Colors.white.withValues(alpha: 0.25),
               borderRadius: BorderRadius.circular(8),
             ),
             child: const Icon(Icons.arrow_back_ios_new_rounded, color: Colors.white, size: 18),
@@ -211,7 +209,7 @@ class _TimedChallengeScreenState extends State<TimedChallengeScreen> {
             icon: Container(
               padding: const EdgeInsets.all(6),
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.25),
+                color: Colors.white.withValues(alpha: 0.25),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: const Icon(Icons.home_rounded, color: Colors.white, size: 22),
