@@ -165,7 +165,7 @@ class PredictProvider extends ChangeNotifier {
   }
 
   void _buildNQNextStep(NQueensStepModel nextStep) {
-    _currentQuestion = PredictQuestion(
+    _currentQuestion = const PredictQuestion(
       type: QuestionType.nextStep,
       prompt: '🤔 What will the algorithm do NEXT?',
       hint: '💡 The algorithm places, removes, or detects conflicts row by row.',
@@ -188,9 +188,9 @@ class PredictProvider extends ChangeNotifier {
     final correctLabel = 'No valid column exists in row ${current.row} — all are under attack';
     final options = [
       PredictOption(label: correctLabel, isCorrect: true, explanation: 'Correct! When every column in a row is attacked by existing queens, backtracking is the only option.'),
-      PredictOption(label: 'A queen was placed in the wrong row', isCorrect: false, explanation: 'No — the algorithm always fills rows top to bottom.'),
-      PredictOption(label: 'The puzzle has no solution', isCorrect: false, explanation: 'No — local backtracking does not mean the whole puzzle is unsolvable.'),
-      PredictOption(label: 'The algorithm found the solution', isCorrect: false, explanation: 'No — backtracking means the algorithm is retreating, not succeeding.'),
+      const PredictOption(label: 'A queen was placed in the wrong row', isCorrect: false, explanation: 'No — the algorithm always fills rows top to bottom.'),
+      const PredictOption(label: 'The puzzle has no solution', isCorrect: false, explanation: 'No — local backtracking does not mean the whole puzzle is unsolvable.'),
+      const PredictOption(label: 'The algorithm found the solution', isCorrect: false, explanation: 'No — backtracking means the algorithm is retreating, not succeeding.'),
     ]..shuffle(_rng);
     _options = options;
   }
@@ -213,8 +213,8 @@ class PredictProvider extends ChangeNotifier {
     _options = [
       PredictOption(label: correctLabel, isCorrect: true, explanation: explanation),
       PredictOption(label: wrongLabel, isCorrect: false, explanation: ''),
-      PredictOption(label: 'The row is not yet available', isCorrect: false, explanation: ''),
-      PredictOption(label: 'Cannot determine without seeing the full board', isCorrect: false, explanation: ''),
+      const PredictOption(label: 'The row is not yet available', isCorrect: false, explanation: ''),
+      const PredictOption(label: 'Cannot determine without seeing the full board', isCorrect: false, explanation: ''),
     ]..shuffle(_rng);
   }
 
@@ -248,10 +248,10 @@ class PredictProvider extends ChangeNotifier {
       hint: '💡 Three rules: same column, same row, or same diagonal.',
     );
     _options = [
-      PredictOption(label: 'Same column or diagonal as another queen', isCorrect: true, explanation: 'Correct! N-Queens forbids queens sharing a column, row, or either diagonal.'),
-      PredictOption(label: 'The cell is outside the board', isCorrect: false, explanation: ''),
-      PredictOption(label: 'Too many queens on this side', isCorrect: false, explanation: ''),
-      PredictOption(label: 'The row is already full', isCorrect: false, explanation: ''),
+      const PredictOption(label: 'Same column or diagonal as another queen', isCorrect: true, explanation: 'Correct! N-Queens forbids queens sharing a column, row, or either diagonal.'),
+      const PredictOption(label: 'The cell is outside the board', isCorrect: false, explanation: ''),
+      const PredictOption(label: 'Too many queens on this side', isCorrect: false, explanation: ''),
+      const PredictOption(label: 'The row is already full', isCorrect: false, explanation: ''),
     ]..shuffle(_rng);
   }
 
@@ -274,10 +274,10 @@ class PredictProvider extends ChangeNotifier {
         hint: '💡 Sudoku backtracks when no digit 1-9 satisfies row, column, and 3×3 box rules simultaneously.',
       );
       _options = [
-        PredictOption(label: 'No valid digit 1-9 fits this cell without conflict', isCorrect: true, explanation: 'Correct! When all 9 digits violate at least one constraint, the algorithm must backtrack.'),
-        PredictOption(label: 'The algorithm chose the wrong row', isCorrect: false, explanation: ''),
-        PredictOption(label: 'The cell was already filled', isCorrect: false, explanation: ''),
-        PredictOption(label: 'The puzzle is unsolvable', isCorrect: false, explanation: ''),
+        const PredictOption(label: 'No valid digit 1-9 fits this cell without conflict', isCorrect: true, explanation: 'Correct! When all 9 digits violate at least one constraint, the algorithm must backtrack.'),
+        const PredictOption(label: 'The algorithm chose the wrong row', isCorrect: false, explanation: ''),
+        const PredictOption(label: 'The cell was already filled', isCorrect: false, explanation: ''),
+        const PredictOption(label: 'The puzzle is unsolvable', isCorrect: false, explanation: ''),
       ]..shuffle(_rng);
     } else if (rand == 1) {
       // Is this digit valid?
@@ -292,11 +292,11 @@ class PredictProvider extends ChangeNotifier {
         PredictOption(label: isValid ? 'Yes — no conflict in row, col, or box' : 'No — conflicts with row, col, or box constraint', isCorrect: true, explanation: 'Correct! ${nextStep.explanation}'),
         PredictOption(label: isValid ? 'No — conflicts with row, col, or box constraint' : 'Yes — no conflict in row, col, or box', isCorrect: false, explanation: ''),
         PredictOption(label: 'Digit $testDigit would work instead', isCorrect: false, explanation: ''),
-        PredictOption(label: 'Cannot place any digit here', isCorrect: false, explanation: ''),
+        const PredictOption(label: 'Cannot place any digit here', isCorrect: false, explanation: ''),
       ]..shuffle(_rng);
     } else {
       // Next step
-      _currentQuestion = PredictQuestion(
+      _currentQuestion = const PredictQuestion(
         type: QuestionType.nextStep,
         prompt: '🤔 What will the algorithm do NEXT in the Sudoku?',
         hint: '💡 The solver tries digits 1-9 and backtracks when stuck.',
@@ -328,10 +328,10 @@ class PredictProvider extends ChangeNotifier {
         hint: '💡 Backtracking in maze means the current path is a dead end — all neighbors are walls or visited.',
       );
       _options = [
-        PredictOption(label: 'Dead end — all adjacent cells are walls or already visited', isCorrect: true, explanation: 'Correct! In DFS maze solving, backtracking means no unvisited neighbors exist from the current cell.'),
-        PredictOption(label: 'The exit was found in a different direction', isCorrect: false, explanation: ''),
-        PredictOption(label: 'The algorithm reset to start', isCorrect: false, explanation: ''),
-        PredictOption(label: 'A loop was detected', isCorrect: false, explanation: ''),
+        const PredictOption(label: 'Dead end — all adjacent cells are walls or already visited', isCorrect: true, explanation: 'Correct! In DFS maze solving, backtracking means no unvisited neighbors exist from the current cell.'),
+        const PredictOption(label: 'The exit was found in a different direction', isCorrect: false, explanation: ''),
+        const PredictOption(label: 'The algorithm reset to start', isCorrect: false, explanation: ''),
+        const PredictOption(label: 'A loop was detected', isCorrect: false, explanation: ''),
       ]..shuffle(_rng);
     } else if (rand == 1) {
       _currentQuestion = PredictQuestion(
@@ -343,11 +343,11 @@ class PredictProvider extends ChangeNotifier {
       _options = [
         PredictOption(label: canMove ? 'Yes — open cell, not yet visited' : 'No — wall or already visited', isCorrect: true, explanation: 'Correct! ${nextStep.explanation}'),
         PredictOption(label: canMove ? 'No — wall or already visited' : 'Yes — open cell, not yet visited', isCorrect: false, explanation: ''),
-        PredictOption(label: 'Move is valid but leads to a dead end', isCorrect: false, explanation: ''),
-        PredictOption(label: 'Only diagonal moves are allowed', isCorrect: false, explanation: ''),
+        const PredictOption(label: 'Move is valid but leads to a dead end', isCorrect: false, explanation: ''),
+        const PredictOption(label: 'Only diagonal moves are allowed', isCorrect: false, explanation: ''),
       ]..shuffle(_rng);
     } else {
-      _currentQuestion = PredictQuestion(
+      _currentQuestion = const PredictQuestion(
         type: QuestionType.nextStep,
         prompt: '🤔 What will the maze explorer do NEXT?',
         hint: '💡 The DFS explorer moves, hits walls, or backtracks when stuck.',

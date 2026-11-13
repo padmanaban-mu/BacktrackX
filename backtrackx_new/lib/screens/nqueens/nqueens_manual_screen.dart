@@ -156,7 +156,6 @@ class _NQueensManualScreenState extends State<NQueensManualScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final cs = Theme.of(context).colorScheme;
     final colorScheme = Theme.of(context).colorScheme;
     
     return Scaffold(
@@ -165,7 +164,7 @@ class _NQueensManualScreenState extends State<NQueensManualScreen> {
   icon: Container(
     padding: const EdgeInsets.all(6),
     decoration: BoxDecoration(
-      color: Colors.white.withOpacity(0.25),
+      color: Colors.white.withValues(alpha: 0.25),
       borderRadius: BorderRadius.circular(8),
     ),
     child: const Icon(Icons.arrow_back_ios_new_rounded, color: Colors.white, size: 18),
@@ -179,7 +178,7 @@ class _NQueensManualScreenState extends State<NQueensManualScreen> {
             icon: Container(
               padding: const EdgeInsets.all(6),
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.25),
+                color: Colors.white.withValues(alpha: 0.25),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: const Icon(Icons.home_rounded, color: Colors.white, size: 22),

@@ -49,7 +49,7 @@ class _PredictScreenState extends State<PredictScreen> {
             final isAttacked = attacked.any((cell) => cell[0] == r && cell[1] == c);
             Color cellColor = isLight ? Colors.white : Colors.grey.shade300;
             if (isAttacked) cellColor = Colors.red.shade100;
-            if (hasQueen) cellColor = isLight ? cs.primaryContainer : cs.primary.withOpacity(0.3);
+            if (hasQueen) cellColor = isLight ? cs.primaryContainer : cs.primary.withValues(alpha: 0.3);
             return Container(
               decoration: BoxDecoration(
                 color: cellColor,
@@ -299,7 +299,7 @@ class _PredictScreenState extends State<PredictScreen> {
               if (question != null) ...
                 [
                   const SizedBox(height: 4),
-                  Text(question.hint, style: TextStyle(fontSize: 12, color: cs.onPrimaryContainer.withOpacity(0.7))),
+                  Text(question.hint, style: TextStyle(fontSize: 12, color: cs.onPrimaryContainer.withValues(alpha: 0.7))),
                 ]
             ],
           ),
@@ -404,7 +404,7 @@ class _PredictScreenState extends State<PredictScreen> {
                   width: 28, height: 28,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: answered && option.isCorrect ? Colors.white : cs.primary.withOpacity(0.15),
+                    color: answered && option.isCorrect ? Colors.white : cs.primary.withValues(alpha: 0.15),
                   ),
                   child: Center(
                     child: leadIcon != null
@@ -442,7 +442,7 @@ class _PredictScreenState extends State<PredictScreen> {
               Icon(correct ? Icons.check_circle : Icons.cancel, color: correct ? Colors.green : Colors.red),
               const SizedBox(width: 8),
               Text(
-                correct ? '+${xpEarned} XP${provider.combo > 1 ? " (${provider.multiplier}x combo!)" : ""}' : 'Incorrect',
+                correct ? '+$xpEarned XP${provider.combo > 1 ? " (${provider.multiplier}x combo!)" : ""}' : 'Incorrect',
                 style: TextStyle(fontWeight: FontWeight.bold, color: correct ? Colors.green : Colors.red, fontSize: 16),
               ),
             ],

@@ -176,7 +176,7 @@ class _SudokuManualScreenState extends State<SudokuManualScreen> {
           icon: Container(
             padding: const EdgeInsets.all(6),
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.25),
+              color: Colors.white.withValues(alpha: 0.25),
               borderRadius: BorderRadius.circular(8),
             ),
             child: const Icon(Icons.arrow_back_ios_new_rounded, color: Colors.white, size: 18),
@@ -189,7 +189,7 @@ class _SudokuManualScreenState extends State<SudokuManualScreen> {
             icon: Container(
               padding: const EdgeInsets.all(6),
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.25),
+                color: Colors.white.withValues(alpha: 0.25),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: const Icon(Icons.home_rounded, color: Colors.white, size: 22),

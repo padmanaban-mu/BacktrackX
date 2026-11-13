@@ -36,8 +36,11 @@ class _MazeManualScreenState extends State<MazeManualScreen> {
       _selectedMaze = index;
       if (index == 0) {
         _grid = MazeService.easyMaze.map((row) => List<int>.from(row)).toList();
-      } else if (index == 1) _grid = MazeService.mediumMaze.map((row) => List<int>.from(row)).toList();
-      else _grid = MazeService.hardMaze.map((row) => List<int>.from(row)).toList();
+      } else if (index == 1) {
+        _grid = MazeService.mediumMaze.map((row) => List<int>.from(row)).toList();
+      } else {
+        _grid = MazeService.hardMaze.map((row) => List<int>.from(row)).toList();
+      }
       
       _rows = _grid.length;
       _cols = _grid[0].length;
@@ -149,14 +152,13 @@ class _MazeManualScreenState extends State<MazeManualScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final cs = Theme.of(context).colorScheme;
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
   icon: Container(
     padding: const EdgeInsets.all(6),
     decoration: BoxDecoration(
-      color: Colors.white.withOpacity(0.25),
+      color: Colors.white.withValues(alpha: 0.25),
       borderRadius: BorderRadius.circular(8),
     ),
     child: const Icon(Icons.arrow_back_ios_new_rounded, color: Colors.white, size: 18),
@@ -170,7 +172,7 @@ class _MazeManualScreenState extends State<MazeManualScreen> {
             icon: Container(
               padding: const EdgeInsets.all(6),
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.25),
+                color: Colors.white.withValues(alpha: 0.25),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: const Icon(Icons.home_rounded, color: Colors.white, size: 22),

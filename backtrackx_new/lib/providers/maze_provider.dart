@@ -27,8 +27,11 @@ class MazeProvider extends ChangeNotifier {
   void loadAndSolve(int mazeIndex) {
     if (mazeIndex == 0) {
       _initialGrid = MazeService.easyMaze;
-    } else if (mazeIndex == 1) _initialGrid = MazeService.mediumMaze;
-    else _initialGrid = MazeService.hardMaze;
+    } else if (mazeIndex == 1) {
+      _initialGrid = MazeService.mediumMaze;
+    } else {
+      _initialGrid = MazeService.hardMaze;
+    }
     
     _steps = _service.solveWithSteps(_initialGrid);
     _currentStepIndex = 0;

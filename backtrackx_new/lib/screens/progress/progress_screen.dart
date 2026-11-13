@@ -46,7 +46,7 @@ class _ProgressScreenState extends State<ProgressScreen>
           icon: Container(
             padding: const EdgeInsets.all(6),
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.25),
+              color: Colors.white.withValues(alpha: 0.25),
               borderRadius: BorderRadius.circular(8),
             ),
             child: const Icon(Icons.arrow_back_ios_new_rounded,
@@ -60,7 +60,7 @@ class _ProgressScreenState extends State<ProgressScreen>
             icon: Container(
               padding: const EdgeInsets.all(6),
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.25),
+                color: Colors.white.withValues(alpha: 0.25),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: const Icon(Icons.home_rounded, color: Colors.white, size: 22),
@@ -114,7 +114,7 @@ class _ProgressScreenState extends State<ProgressScreen>
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [cs.primary, cs.primary.withOpacity(0.7)],
+                colors: [cs.primary, cs.primary.withValues(alpha: 0.7)],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
               ),
@@ -250,7 +250,7 @@ class _ProgressScreenState extends State<ProgressScreen>
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(Icons.history_edu, size: 64, color: cs.primary.withOpacity(0.3)),
+            Icon(Icons.history_edu, size: 64, color: cs.primary.withValues(alpha: 0.3)),
             const SizedBox(height: 16),
             Text('No history yet.',
                 style: TextStyle(fontSize: 18, color: cs.onSurfaceVariant)),
@@ -277,7 +277,7 @@ class _ProgressScreenState extends State<ProgressScreen>
                       borderRadius: BorderRadius.circular(12)),
                   child: ListTile(
                     leading: CircleAvatar(
-                      backgroundColor: cs.primary.withOpacity(0.1),
+                      backgroundColor: cs.primary.withValues(alpha: 0.1),
                       child: Icon(Icons.check_circle, color: cs.primary, size: 20),
                     ),
                     title: Text(lesson.title,
@@ -302,8 +302,8 @@ class _ProgressScreenState extends State<ProgressScreen>
                 child: ListTile(
                   leading: CircleAvatar(
                     backgroundColor: quiz.passed
-                        ? Colors.green.withOpacity(0.15)
-                        : Colors.red.withOpacity(0.15),
+                        ? Colors.green.withValues(alpha: 0.15)
+                        : Colors.red.withValues(alpha: 0.15),
                     child: Text(
                       '${(quiz.percentage * 100).round()}%',
                       style: TextStyle(
@@ -321,8 +321,8 @@ class _ProgressScreenState extends State<ProgressScreen>
                         horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
                       color: quiz.passed
-                          ? Colors.green.withOpacity(0.1)
-                          : Colors.red.withOpacity(0.1),
+                          ? Colors.green.withValues(alpha: 0.1)
+                          : Colors.red.withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Text(
@@ -354,7 +354,7 @@ class _ProgressScreenState extends State<ProgressScreen>
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
           decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+            color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(12),
           ),
           child: Text('$count',
@@ -385,7 +385,7 @@ class _ProgressScreenState extends State<ProgressScreen>
       'backtrack_master': {'icon': 'brain', 'label': 'Backtrack Master', 'desc': 'Mastered backtracking'},
     };
 
-    final IconData Function(String) iconFor = (key) {
+    IconData iconFor(String key) {
       switch (key) {
         case 'fire': return Icons.local_fire_department;
         case 'lightning': return Icons.bolt;
@@ -398,14 +398,14 @@ class _ProgressScreenState extends State<ProgressScreen>
         case 'calendar': return Icons.calendar_today;
         default: return Icons.menu_book;
       }
-    };
+    }
 
     if (badges.isEmpty) {
       return Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(Icons.emoji_events, size: 64, color: cs.primary.withOpacity(0.3)),
+            Icon(Icons.emoji_events, size: 64, color: cs.primary.withValues(alpha: 0.3)),
             const SizedBox(height: 16),
             Text('No badges yet!',
                 style: TextStyle(fontSize: 18, color: cs.onSurfaceVariant)),

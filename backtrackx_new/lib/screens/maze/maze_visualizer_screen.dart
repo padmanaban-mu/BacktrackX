@@ -60,7 +60,6 @@ class _MazeVisualizerScreenState extends State<MazeVisualizerScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final cs = Theme.of(context).colorScheme;
     final provider = context.watch<MazeProvider>();
     final grid = provider.currentGrid;
     final rows = grid.isNotEmpty ? grid.length : 0;
@@ -72,7 +71,7 @@ class _MazeVisualizerScreenState extends State<MazeVisualizerScreen> {
   icon: Container(
     padding: const EdgeInsets.all(6),
     decoration: BoxDecoration(
-      color: Colors.white.withOpacity(0.25),
+      color: Colors.white.withValues(alpha: 0.25),
       borderRadius: BorderRadius.circular(8),
     ),
     child: const Icon(Icons.arrow_back_ios_new_rounded, color: Colors.white, size: 18),
@@ -86,7 +85,7 @@ class _MazeVisualizerScreenState extends State<MazeVisualizerScreen> {
   icon: Container(
     padding: const EdgeInsets.all(6),
     decoration: BoxDecoration(
-      color: Colors.white.withOpacity(0.25),
+      color: Colors.white.withValues(alpha: 0.25),
       borderRadius: BorderRadius.circular(8),
     ),
     child: const Icon(Icons.home_rounded, color: Colors.white, size: 22),
@@ -194,7 +193,7 @@ class _MazeVisualizerScreenState extends State<MazeVisualizerScreen> {
                   isValid: provider.currentStep?.isValid ?? false,
                   decisionRoot: 'Root: Start (0, 0)',
                   decisionNode: provider.currentStep != null ? 'Cell (${provider.currentStep!.row}, ${provider.currentStep!.col})' : '',
-                  decisionLeaf: provider.currentStep != null ? '${provider.currentStep!.action.toUpperCase()}' : '',
+                  decisionLeaf: provider.currentStep != null ? provider.currentStep!.action.toUpperCase() : '',
                 ).animate().fadeIn(delay: 400.ms).slideY(),
               ),
             ),

@@ -23,7 +23,6 @@ class _NQueensVisualizerScreenState extends State<NQueensVisualizerScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final cs = Theme.of(context).colorScheme;
     final provider = context.watch<NQueensProvider>();
     final theme = Theme.of(context);
 
@@ -33,7 +32,7 @@ class _NQueensVisualizerScreenState extends State<NQueensVisualizerScreen> {
   icon: Container(
     padding: const EdgeInsets.all(6),
     decoration: BoxDecoration(
-      color: Colors.white.withOpacity(0.25),
+      color: Colors.white.withValues(alpha: 0.25),
       borderRadius: BorderRadius.circular(8),
     ),
     child: const Icon(Icons.arrow_back_ios_new_rounded, color: Colors.white, size: 18),
@@ -47,7 +46,7 @@ class _NQueensVisualizerScreenState extends State<NQueensVisualizerScreen> {
   icon: Container(
     padding: const EdgeInsets.all(6),
     decoration: BoxDecoration(
-      color: Colors.white.withOpacity(0.25),
+      color: Colors.white.withValues(alpha: 0.25),
       borderRadius: BorderRadius.circular(8),
     ),
     child: const Icon(Icons.home_rounded, color: Colors.white, size: 22),
@@ -213,7 +212,7 @@ class _NQueensVisualizerScreenState extends State<NQueensVisualizerScreen> {
                   isValid: provider.currentStep?.isValid ?? false,
                   decisionRoot: 'Root: Place Queens',
                   decisionNode: provider.currentStep != null ? 'Cell (${provider.currentStep!.row}, ${provider.currentStep!.col})' : '',
-                  decisionLeaf: provider.currentStep != null ? '${provider.currentStep!.action.toUpperCase()}' : '',
+                  decisionLeaf: provider.currentStep != null ? provider.currentStep!.action.toUpperCase() : '',
                 ).animate().fadeIn(delay: 400.ms).slideY(),
               ),
             ),
