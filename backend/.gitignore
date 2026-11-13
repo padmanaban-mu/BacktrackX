@@ -1,0 +1,24 @@
+@"
+# Large archives / zip files
+*.zip
+*.tar.gz
+
+# Environment secrets
+.env
+*.env.local
+
+# Node.js dependencies
+node_modules/
+npm-debug.log*
+
+# Flutter / Dart build artifacts
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+build/
+
+# IDE & Editor files
+.idea/
+.vscode/
+*.iml
+"@ | Out-File -FilePath .gitignore -Encoding utf8
